@@ -9,13 +9,45 @@
     <h1>Solutions for All Questions</h1>
     <hr />
     <div>
-      <h2 id="question1">Merge Strings Alternately</h2>
-      <p>first questions solution bla bla bla</p>
+      <h2 id="question1"> #1) Merge Strings Alternately</h2>
+      <p>We are given two strings, word1 and word2. Question wants us to merge this two Strings, 
+        by adding letters in alternating order, starting from word1. And if a string is longer than the other, we need to append the additional letters onto the end of the merged string.
+
+        So, since two strings most likely going to be different length, lets say n,m for lengths of word1, word2.
+        For this solution, I used the two pointer technique. We need to use two pointers, one for each string, and iterate through the strings,adding characters one by one to the result string.
+
+        Here is the <strong>algorithm</strong> for the solution: 
+        <ul>
+          <li>
+            initialize i,j = 0
+          </li>
+          <li>
+            initialize an empty string, for appending the result. 
+          </li>
+          <li>
+            iterate through the array while pointer i's value is less than word1's length, or pointer j's value is less than word2's length.
+            <ul>
+              <li>
+                if the pointer i's value is less than word1's length, means we still have at least one character we didnt go through in the string.
+                append that character to the string, and increase i's value by one. 
+              </li>
+              <li>
+                if the pointer j's value is less than word2's length, append the character pointer j is pointing, increase j's value by one. 
+              </li>
+            </ul>
+            <li>
+             return the result string 
+            </li>
+          </li>
+        </ul>
+
+        By this loop and conditions, we ensure that if any of word1 or word2 has smaller length than the other one, after all of its characters are iterated and appended to the result, rest of the longer string's characters will be appended. 
+        And since we're only looping through two arrays length n and m, space complexity will be <strong>O(m+n).</strong> And space complexity is <strong>O(1).</strong>
+      </p>
       <hr />
     </div>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <div>
-      <h2 id="question2">Merge Strings Alternately</h2>
+      <h2 id="question2">Question 2</h2>
       <p>second question solution bla bla bla</p>
       <hr />
     </div>
