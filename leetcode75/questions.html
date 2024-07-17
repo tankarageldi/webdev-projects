@@ -47,6 +47,28 @@
       <hr />
     </div>
     <div>
+      <h2 id="question2">#2) Greatest Common Divisor of Strings </h2>
+      <p>
+        for this question,For two strings s and t, we say "t divides s" if and only if t is concatenated with itself one or more times. So my approach was, if there is a greatest common divisor, then combining that greatest common divisor 1 or more times with itself will give s, and t. So if there is a greatest common divisor, the result of combining t and s, will be some type of multiplication of the gcd. By this logic, to check if there is a gcd, we can just check if the strings combined from both sides are equal. If they are not, there is no gcd, so we can just return an empty string. 
+        If they are equal, we can go on and calculate the gcd of the <strong>lengths of the strings</strong>, which will give us the largest common divisor length inside the string, lets say m . Now we just have to return the first m letters of any of them word1 or word2. Here is the algorithm : 
+        <ul>
+          <li>
+            Check if str1 + str2 is not equal to str2 + str1
+            <ul>
+              <li>if true, return empty string since there is no greatest common divisor of these two strings.</li>
+            </ul>
+          </li>
+          <li>
+            Else, calculate the greatest commmon divisor between str1 and str2's lengths, assign it to a variable "n". 
+          </li>
+          <li>
+            return the first <strong>n</strong> characters in any string.
+          </li>
+        </ul>
+      </p>
+      <hr>
+    </div>
+    <div>
       <h2 id="question6 ">#6) Reverse Words in String</h2>
       <p> For this question, my first intuition was converting the string into a list by splitting the words by empty spaces after them. Python has a function for this, which is split() function.
         After the spliting the string to a list, we are going to iterate the list in <strong>reverse</strong> order. And while iterating in reverse order, we need to make sure that spaces between words are correctly appended too. For this, we will <strong>not</strong>
