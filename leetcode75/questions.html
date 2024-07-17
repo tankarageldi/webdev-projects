@@ -47,8 +47,27 @@
       <hr />
     </div>
     <div>
-      <h2 id="question2">Question 2</h2>
-      <p>second question solution bla bla bla</p>
+      <h2 id="question6 ">#6) Reverse Words in String</h2>
+      <p> For this question, my first intuition was converting the string into a list by splitting the words by empty spaces after them. Python has a function for this, which is split() function.
+        After the spliting the string to a list, we are going to iterate the list in <strong>reverse</strong> order. And while iterating in reverse order, we need to make sure that spaces between words are correctly appended too. For this, we will <strong>not</strong>
+        append the first word in the original list. Here is the algorithm : 
+        <ul>
+          <li>
+            split the string into a list.
+          </li>
+          <li>
+            create a variable, for appending words. 
+          </li>
+          <li>
+            iterate through the list, in reverse order, but without the first element of the original list.
+            <ul><li>
+              append the first element in reverse list to the result string, also append a " " character. 
+            </li></ul>
+          </li>
+          <li>get the last word to append to the list, which is the first element of the initial list. append it to the result</li>
+          <li>return the result</li>
+        </ul>
+      </p>
       <hr />
     </div>
   </body>
