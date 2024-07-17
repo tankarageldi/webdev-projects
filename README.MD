@@ -4,14 +4,13 @@ website for all my fullstack web development learning experience and projects.
 
 visit the website :[https://tankarageldi.github.io/webdev-projects/](https://tankarageldi.github.io/webdev-projects/)
 
-
 ## Move-in website
 
 This is just a template website I created, with no functionality.
 
 Only used HTML and CSS, with the help of the Bootstrap framework.
 
-visit the website :[https://tankarageldi.github.io/webdev-projects/movein-web/index.html](https://tankarageldi.github.io/webdev-projects/movein-web/index.html)
+visit the website through link above.
 
 ## TinDog website
 
@@ -19,4 +18,10 @@ This website is a template website, its a website for a app which is created for
 
 Only used HTML and CSS, so no functionality in this one.
 
-visit website
+visit website through link above.
+
+## LeetCode 75
+
+This website is for my leetcode top 75 questions solutions. It just a simple html website with no css purely for DSA problem solution explanations.
+
+visit website throught the link above to check out my solutions for leetcode's top 75 interview questions.
