@@ -24,10 +24,16 @@ visit website through link above.
 
 This website is for my leetcode top 75 questions solutions. It just a simple html website with no css purely for DSA problem solution explanations.
 
-visit website throught the link above to check out my solutions for leetcode's top 75 interview questions.
+visit website through the link above to check out my solutions for leetcode's top 75 interview questions.
 
-## Odin Recipes 
+## Odin Recipes
 
-This website is for the first assignment in the Odin Project. Website is only created with HTML, contains two links to two webpages, which contains the lasagna, and salmon cobb salad recipe. 
+This website is for the first assignment in the Odin Project. Website is only created with HTML, contains two links to two webpages, which contains the lasagna, and salmon cobb salad recipe.
 
 visit website throught the link above.
+
+## Drumkit JS
+
+This website is a drumkit website I created learning javascript, which allows you to play drums with your keyboard clicks or mouse clicks.
+
+visit website through the link above.
