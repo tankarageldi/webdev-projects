@@ -143,6 +143,71 @@ class Solution:
         </pre>
       </div>
       <hr />
+      <div>
+        <h2 id="question7">#7) Product of Array Except Self</h2>
+        <p> For this question, my first approach was to calculate the product of all elements, and divide each while iterating through the array, but in the description division is not allowed to use. Also they want us to do this question in O(n) time, with O(1) space, not counting the output array. 
+          So, second approach was to calculate the left product of each element, and calculate the right product of each element. To do this, we can create two lists, left and right.
+          left list is for keeping track of the left products of each element in nums, and right list is for keeping track of right products of each element in nums, and the answer will be the product of left and right. 
+          This way, we find an easy solution with O(n) time, but space complexity is greater than O(1), since we need to have three arrays, left,right,and output. To reduce the complexity, instead of having the right list, we can only calculate the left list, and multiply the corresponding right product value, which we can keep in an integer. And this left list, by this method, turns into the output list, so we dont need that one anymore either. 
+          Here is the algorithm for this solution: 
+          <ul>
+            <li>
+              get the lenght of nums, store it in "n"
+            </li>
+            <li>
+              create the output list, same length as nums list
+            </li>
+            <li>
+              append 1, to the first index of the list. Regardless what element is in the first index, 1 will always be its left product.
+            </li>
+            <li>
+              create a variable, called right, and assign 1, for keeping track of the right product of each index
+            </li>
+            <li>
+              loop from index i = 1 to the end of the nums 
+              <ul>
+                calculate the product of nums[i-1] and output[i-1], and assign it to output[i]
+              </ul>
+            </li>
+            <li>
+              loop from index i = length - 1 to 0
+              <ul>
+                <li>
+                  multiply nums[i] and r values, and assign it to r 
+                </li>
+                <li>
+                  calculate the product of output[i-1] and r,assign it to output[i-1]
+                </li>
+              </ul>
+            </li>
+            <li>
+              return output
+            </li>
+          </ul>
+          O(n) time complexity, O(1) space complexity, when output array space does not count.
+        </p>
+        <div class="code-container">
+          <pre>
+            <code>
+class Solution:
+    def productExceptSelf(self, nums: list[int]) -> list[int]:
+        length = len(nums)
+        output = [None] * (length-1)
+        output.insert(0,1)
+        r = 1
+
+        for i in range(1,length):
+            output[i] = nums[i-1] * output[i-1]
+
+        for i in range(length-1,0,-1):
+            r = nums[i] * r
+            output[i-1] = output[i-1] * r
+            
+        return output
+            </code>
+          </pre>
+        </div>
+        <hr />
       <div id="daily">
         <h1>Daily Question Solutions</h1>
         <div id="18july2024">
