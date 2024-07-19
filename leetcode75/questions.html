@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <h1>Solutions for All Questions</h1>
@@ -44,6 +45,29 @@
         By this loop and conditions, we ensure that if any of word1 or word2 has smaller length than the other one, after all of its characters are iterated and appended to the result, rest of the longer string's characters will be appended. 
         And since we're only looping through two arrays length n and m, space complexity will be <strong>O(m+n).</strong> And space complexity is <strong>O(1).</strong>
       </p>
+      <div class="code-container">
+        <pre>
+          <code>
+class Solution(object):
+    def mergeAlternately(self, word1, word2):
+        m = len(word1)
+        n = len(word2)
+        i = 0
+        j = 0
+        result = []
+        
+        while i < m or j < n:
+            if i < m:
+                result += word1[i]
+                i += 1
+            if j < n:
+                result += word2[j]
+                j += 1
+        
+        return "".join(result)
+          </code>
+        </pre>
+      </div>
       <hr />
     </div>
     <div>
@@ -66,6 +90,19 @@
           </li>
         </ul>
       </p>
+      <div class="code-container">
+        <pre>
+          <code>
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str)
+        if str1 + str2 != str2 + str1:
+            return ""
+                
+        max_length = gcd(len(str1),len(str2))
+        return str1[:max_length]
+          </code>
+        </pre>
+      </div>
       <hr>
     </div>
     <div>
@@ -90,7 +127,82 @@
           <li>return the result</li>
         </ul>
       </p>
+      <div class="code-container">
+        <pre>
+          <code>
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        res = ""
+        list_words = s.split()
+        for item in reversed(list_words[1:]):
+            res += item + " "
+        last = list_words[0]
+        res += last
+        return res
+          </code>
+        </pre>
+      </div>
       <hr />
+      <div id="daily">
+        <h1>Daily Question Solutions</h1>
+        <div id="18july2024">
+          <h2>07/18/2024) 1380. Lucky Numbers in Matrix</h2>
+          <p>Problem : Given an m x n matrix of distinct numbers, return all lucky numbers in the matrix in any order.
+
+            A lucky number is an element of the matrix such that it is the minimum element in its row and maximum in its column.
+            <br>
+            <br>This is a matrix question. Since the question explains the lucky number is the <strong>minimum element in its row</strong> and <strong>maximum element in its column</strong>. 
+            So my first thought was to find the <strong>minimum element in each row</strong> and put it inside a list. 
+            after this is done, we need to find the maximum element in each column, but columns are not as easy to access as rows.To get the max of each column, I constructed a nested for loop, to go through the every i'th element of each row, and append those elements into a dummy list, to basically construct a column list. After first column is constructed inside the list, I calculate the maximum value inside the dummy list, and append this value to another list for keeping track of maximum values in each column, then clear the dummy list to use it again for the next column. After our nested for loop is done, we have two lists, one contains the minimum elements in each row, and other one contains the maximum elements in each column. now go through both of the lists again to find all common numbers, which are going to be our answers. I appended these numbers into the dummy list i used earlier because it was empty,since i clear the array after each use.
+            Here is the algorithm : 
+            <ul><li>
+              create three lists, min_row for collecting the minimum value in each row, max_col for collecting the maximum value in each column, dummy for a helper list.
+            </li>
+            <li>
+              for each row in the matrix, append the minimum value in the row to the min_row list.
+            </li>
+            <li>
+              loop from i = 0 until m, where m is length of each row. 
+              <ul><li>loop from j = 0 until n, where n is length of each column</li>
+              <ul><li>append the j'th rows i'th column to the dummy list</li></ul>
+              <li>append the maximum value in the dummy list to the max_col list.</li> 
+            </li>
+            <li>clear the dummy list</li>  
+            </ul>
+            <li>go through each element1 in min_row</li>
+            <ul><li>go through each element2 in max_col</li>
+              <li>if element1 is equal to element 2, append the value to the dummy list</li>
+            </ul>
+            <li>return dummy list</li>
+            </ul>
+            </p>
+            <div class="code-container">
+              <pre>
+                <code>
+class Solution:
+    def luckyNumbers (self, matrix: list[list[int]]) -> list[int]:
+        n = len(matrix)
+        m = len(matrix[0])
+        min_row = []
+        max_col = []
+        checklist = []
+        for row in matrix:
+            min_row.append(min(row))
+        for i in range(m):
+            for j in range(n):
+                checklist.append(matrix[j][i])
+            max_col.append(max(checklist))
+            checklist.clear()
+        for element1 in min_row:
+            for element2 in max_col:
+                if element1 == element2:
+                    checklist.append(element1)
+        return checklist
+                </code>
+              </pre>
+            </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
