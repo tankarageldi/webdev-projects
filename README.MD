@@ -37,3 +37,9 @@ visit website throught the link above.
 This website is a drumkit website I created learning javascript, which allows you to play drums with your keyboard clicks or mouse clicks.
 
 visit website through the link above.
+
+## Simon Game
+
+This website is a game, which was inspired by Hasbro's Simon game. The purpose of the game is that You need to click on the buttons in order they flashed. 
+visit website through the link above.
+
