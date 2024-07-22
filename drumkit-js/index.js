@@ -5,12 +5,14 @@ for (var i = 0; i < numberOfButtons; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function () {
     var key = this.innerHTML;
     makeSound(key);
+    buttonAnimation(key);
   });
 }
 // Detecting Keyboard press
 document.addEventListener("keydown", function (event) {
   var key = event.key;
   makeSound(key);
+  buttonAnimation(key);
 });
 
 // function for making the sound.
@@ -48,4 +50,12 @@ function makeSound(key) {
     default:
       break;
   }
+}
+
+function buttonAnimation(key) {
+  var button = document.querySelector("." + key);
+  button.classList.add("pressed");
+  setTimeout(function () {
+    button.classList.remove("pressed");
+  }, 100);
 }
