@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    
   </head>
   <body>
     <h1>Solutions for All Questions</h1>
@@ -206,8 +207,69 @@ class Solution:
         return output
             </code>
           </pre>
-        </div>
+      </div>
         <hr />
+      <div>
+          <h2 id="question8">#8) Increasing Triplet Subsequence</h2>
+          <p>
+            Given an integer array nums, return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k]. If no such indices exists, return false.
+            First off, this looks like an easy question, but one part is very important, which is the question wants <strong>any</strong> (i,j,k) indices that is increasing,<strong>not consequent i,j,k's only</strong>
+            So I struggled a little bit trying to do it with sliding window algorithm, then i read couple solution approaches. Here is the approach i liked the most, 
+            In this approach, we are going to keep track of first, and second smallest numbers during the iteration. To be the second smallest number, the number has to be larger than the first one, and this way, we only need to then find a number that is larger than both of them to return true. 
+            And here is one case, where the output is true, but the resulting array is not the same as questions resulting array, 
+            <br>
+            nums = [20,100,10,12,5,13] 
+            <br>
+            output = True 
+            <br>
+            results = [5,12,13] # first, second, largest
+            <br>but it should've been [10,12,13]. If we look at the literal sense, our solution is wrong, <strong>but</strong> technically, while we are checking the second smallest element, we are making sure that there is an element <strong>exists before the second smallest element, that is smaller than second smallest element.</strong> So when 5 comes after 12, and the algorithm assigns it to the variable first, it really doesnt matter since there is another element in the array before the second smallest elements index, that will satisfy the condition. 
+            So here is the algorihtm: 
+            <ul>
+              <li>
+                assign first and second variables to the largest integers possible.
+              </li>
+              <li>
+                iterate through the array
+                <ul>
+                  <li>
+                    if the current element is smaller or equal to variable first, assign that element to first.
+                  </li>
+                  <li>
+                    if the current element is smaller than variable second, and larger than first, assign that element to second.
+                  </li>
+                  <li>
+                    if the current element is greater than both of second and first values, then return true. 
+                  </li>
+                </ul>
+              </li>
+              <li>
+                return false if the loop did not return true.
+              </li>
+            </ul>
+          </p>
+          <div class="code-container">
+            <pre>
+              <code>
+class Solution:
+    def increasingTriplet(self, nums: list[int]) -> bool:
+        size = len(nums)
+        ans = False
+        first = float("inf")
+        second = float("inf")
+
+        for i in range(size):
+            if nums[i] <= first:
+                first = nums[i]
+            elif nums[i] <= second and nums[i] > first:
+                second = nums[i]
+            elif nums[i] > first and nums[i] > second:
+                ans = True
+        return ans
+              </code>
+            </pre>
+      </div>
+          <hr>
       <div id="daily">
         <h1>Daily Question Solutions</h1>
         <div id="18july2024">
@@ -269,5 +331,6 @@ class Solution:
         </div>
       </div>
     </div>
+    
   </body>
 </html>
