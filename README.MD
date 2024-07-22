@@ -40,6 +40,5 @@ visit website through the link above.
 
 ## Simon Game
 
-This website is a game, which was inspired by Hasbro's Simon game. The purpose of the game is that You need to click on the buttons in order they flashed. 
+This website is a game, which was inspired by Hasbro's Simon game. The purpose of the game is that You need to click on the buttons in order they flashed.
 visit website through the link above.
-
