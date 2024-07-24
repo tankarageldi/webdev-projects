@@ -330,6 +330,95 @@ class Solution:
             </div>
         </div>
       </div>
+      <div id="daily">
+        <div id="24july2024">
+          <h2>07/24/2024) 2191. Sort the Jumbled Numbers</h2>
+          <p> <strong>Description: </strong>
+            You are given a 0-indexed integer array mapping which represents the mapping rule of a shuffled decimal system. mapping[i] = j means digit i should be mapped to digit j in this system. <br> <br>
+
+              The mapped value of an integer is the new integer obtained by replacing each occurrence of digit i in the integer with mapping[i] for all 0 <= i <= 9.
+              <br> <br>
+              You are also given another integer array nums. Return the array nums sorted in non-decreasing order based on the mapped values of its elements.
+              <br> <br>Notes: Elements with the same mapped values should appear in the same relative order as in the input. 
+            The elements of nums should only be sorted based on their mapped values and not be replaced by them.
+            <br> <br>
+            Here is the algorithm: 
+            <ul>
+              <li>
+                create an array to hold pairs of the converted number, and the index of the corresponding element in the nums array.
+              </li>
+              <li>
+                iterate through the array nums from i = 0 to the end.
+                <ul>
+                  <li>
+                    convert the current element in the iteration to a string, to operate with its index
+
+                  </li>
+                  <li>
+                    instantiate an element string, for keeping the fully converted number as a string.
+                  </li>
+                  <li>
+                    now iterate through the current element
+                    <ul>
+                      <li>
+                        get the current digit that we need to map from , convert it to integer, this is our index.
+                      </li>
+                      <li>
+                        get the element from mapping array with this index. convert it to string and append it to the element string.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    after the nested iteration is done, convert the element to integer.
+                  </li>
+                  <li>append the value and i pairs to the array that we created to hold the pairs.</li>
+                </ul>
+              </li>
+              <li>
+                sort the pairs array.
+              </li>
+              <li>
+                create an array for final result
+              </li>
+              <li>
+                loop through each pair in pairs
+                <ul>
+                  <li>
+                    get the i from the pair, get nums[i], and append it to the result array.
+                  </li>
+
+                </ul>
+              </li>
+              <li>return the result array</li>
+            </ul>
+          </p>
+            <div class="code-container">
+              <pre>
+                <code>
+class Solution:
+    def sortJumbled(self, mapping: list[int], nums: list[int]) -> list[int]:
+        pairs = []
+        n = len(nums)
+        for i in range(n):
+                s = str(nums[i])
+                element = ""
+                for j in range(len(s)):
+                    digit =s[j]
+                    digit = int(digit)s
+                    element += str(mapping[digit])
+                value = int(element)
+                pairs.append((value,i))
+        pairs.sort()
+        arr = []
+        for pair in pairs:
+              arr.append(nums[pair[1]])
+        return arr
+              
+                </code>
+              </pre>
+            </div>
+        </div>
+      </div>
     </div>
     
   </body>
