@@ -330,6 +330,7 @@ class Solution:
             </div>
         </div>
       </div>
+      <hr>
       <div id="daily">
         <div id="24july2024">
           <h2>07/24/2024) 2191. Sort the Jumbled Numbers</h2>
@@ -419,7 +420,53 @@ class Solution:
             </div>
         </div>
       </div>
-    </div>
+      <hr>
+      <div id="daily">
+        <div id="24july2024">
+          <h2>07/25/2024) 912. Sort an Array</h2>
+          <p>
+            Given an array of integers nums, sort the array in ascending order and return it.
+            You must solve the problem without using any built-in functions in O(nlog(n)) time complexity and with the smallest space complexity possible. 
+            Since we can't use built in functions, and need to solve it in O(nlog(n)) time, best two options were heap sort, or merge sort. I implemented a heap sort algorithm, which has O(nlogn) complexity, both best and worst case. 
+            <br>
+            <br>
+            Here is the link to heap sort algorithm, using heapifying array and tree structure to sort the array. <a href="https://www.programiz.com/dsa/heap-sort">link</a>
+          </p>
+            <div class="code-container">
+              <pre>
+                <code>
+class Solution:
+    def heapify(self,arr,n,i):
+        largest = i
+        l = 2 * i + 1
+        r = 2 * i + 2
+
+        if l < n and arr[i] < arr[l]:
+            largest = l 
+        
+        if r < n and arr[largest] < arr[r]:
+            largest = r
+        
+        if largest != i:
+            arr[i],arr[largest] = arr[largest], arr[i]
+            self.heapify(arr,n,largest)
+
+    def sortArray(self, nums: list[int]) -> list[int]:
     
+        n = len(nums)
+        for i in range(n//2 , -1 , -1):
+            self.heapify(nums,n,i)
+        for i in range(n-1,0,-1):
+            nums[i],nums[0] = nums[0],nums[i]
+            self.heapify(nums,i,0)
+        return nums
+              
+                </code>
+              </pre>
+            </div>
+        </div>
+      </div>
+      <hr>
+    </div>
   </body>
 </html>
