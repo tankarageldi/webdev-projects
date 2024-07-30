@@ -508,6 +508,78 @@ class Solution:
         </div>
       </div>
       <hr>
+      <div id="342">
+        <h2>342. Power of Four</h2>
+        <p>
+          Given an integer n, return true if it is a power of four. Otherwise, return false.
+
+An integer n is a power of four, if there exists an integer x such that n == 4x.
+<br> So, for solving this question, we just need to find the value x, such as n == 4^x. For this, we can take natural logs of both sides, which will give us ln(n) == x ln(4), and if we rearrange the elements, we get x = ln(n)/ln(4). So we calculate this value of x, since we know n. If this value of x is an integer value, it means that N is power of four. If not, then it is not. Numbers less and equal to 0 are exceptions, because we can take logs of them, they are always going to be false. 
+<br>
+Here is the algorithm: 
+<ul>
+  <li>
+    if n is less or equal to 0, return false
+  </li>
+  <li>
+    calculate the ln(n)/ln(4), assign it to x
+  </li>
+  <li>
+    return true if x is an integer, false if not.
+  </li>
+</ul>
+        </p>
+        <div class="code-container">
+          <pre>
+            <code>
+import math
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        if n <= 0:
+            return False
+        x = math.log(n)/math.log(4)
+        return x.is_integer()
+            </code>
+          </pre>
+        </div>
+      </div>
+      <hr>
+      <div id="217">
+        <h2>217.Contains Duplicate</h2>
+        <p>
+          Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+          <br>
+          For this question, i Used a dictionary to add the values, and while adding the valuesm if a duplicate value is added to the dictionary, it will return true and stop the program. 
+          here is the algorithm : 
+          <ul>
+            <li>
+              initialize an hash map
+            </li>
+            <li>
+              for each number in nums, if the number is in the hash map as a key, return true, if not, add it to the map. 
+            </li>
+            <li>
+              return false if the program reaches this line.
+            </li>
+          </ul>
+        </p>
+        <div class="code-container">
+          <pre>
+            <code>
+class Solution:
+    def containsDuplicate(self, nums: list[int]) -> bool:
+        dic = {}
+        for num in nums:
+            if num in dic:
+                return True
+            else:
+                dic[num] = 1
+        return False
+            </code>
+          </pre>
+        </div>
+      </div>
+      <hr>
     </div>
   </body>
 </html>
