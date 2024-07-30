@@ -467,6 +467,47 @@ class Solution:
         </div>
       </div>
       <hr>
+      <div id="easy">
+        <h1>Easy Questions</h1>
+        <div id="334">
+          <h2>334. Reverse String</h2>
+          <p>
+            Write a function that reverses a string. We have an char array representing a string, and we need to reverse this. So i have approached this question with two pointers, on the opposide sides of the char array. We need to iterate throught the list until left pointer reaches right pointer, and swap the values. 
+            Here's the algorithm: 
+            <ul>
+              <li>
+                initialize two pointers, left = 0, right = far right element in the list.
+              </li>
+              <li>
+                iterate through the array until left pointer value is less than right pointer value
+              </li>
+              <li>
+                swap the left indexed element with right indexed element, 
+              </li>
+              <li>
+                increase left pointer by one, decrease right pointer by one.
+              </li>
+            </ul>
+            <br>
+            Since we dont need to return anything, problem is solved.
+          </p>
+          <div class="code-container">
+            <pre>
+              <code>
+class Solution:
+    def reverseString(self, s: list[str]) -> None:
+        left = 0
+        right = len(s) - 1
+        while left < right:
+            s[left],s[right] = s[right],s[left]
+            left += 1
+            right -= 1
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <hr>
     </div>
   </body>
 </html>
