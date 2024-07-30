@@ -107,6 +107,20 @@ class Solution:
       <hr>
     </div>
     <div>
+      <h2 id="question3"> #3) Kids with the Greatest Number of Candles</h2>
+    </div>
+    <hr>
+    <div>
+      <h2 id="question4"> #4) Can Place Flowers
+      </h2>
+    </div>
+    <hr>
+    <div>
+      <h2 id="question5">#5) Reverse vowels of a String
+      </h2>
+    </div>
+    <hr>
+    <div>
       <h2 id="question6">#6) Reverse Words in String</h2>
       <p> For this question, my first intuition was converting the string into a list by splitting the words by empty spaces after them. Python has a function for this, which is split() function.
         After the spliting the string to a list, we are going to iterate the list in <strong>reverse</strong> order. And while iterating in reverse order, we need to make sure that spaces between words are correctly appended too. For this, we will <strong>not</strong>
@@ -269,6 +283,121 @@ class Solution:
               </code>
             </pre>
       </div>
+          <hr>
+          <div>
+            <h2 id="question9"> #9) String Compression</h2>
+          </div>
+          <hr>
+          <div>
+            <h2 id="question10"> #10) Move Zeroes</h2>
+          </div>
+          <hr>
+          <div>
+            <h2 id="question11"> #11) Is Subsequence</h2>
+          </div>
+          <hr>
+          <div>
+            <h2 id="question12"> #12) Container With Most Water</h2>
+            <p>
+              You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
+            </p>
+            <p>
+              For this question, we need to find the maximum area, from one element to another in the list. My first thought was, using two pointers, at the opposite sides of the list, and calculate the area of the container those two elements make. 
+              To do this, we need to get the difference between the indexes of two elements, and since its a container, its only going to fill up to <strong>smallest</strong> elements height.So we need to multiply the smallest element out of two we are currently pointing, with the difference of indexes, and we get the current area.If we do this with all the elements in the table by shifting the smallest current element pointer only, we will have a fast solution.
+
+              <br>Here is the algorithm: 
+              <ul>
+                <li>
+                  initialize two pointers, left and right, left starting from first element, right starting from last element in the list.
+                </li>
+                <li>
+                  initialize max_area variable, set it to 0, we will use this to compare the current area and the max area. 
+                </li>
+                <li>iterate through the list while left is smaller than right.
+                  <ul>
+                    <li>
+                      do the calculation i mentioned above, multiply the smallest element of two current elements, with difference of two indexes.
+                    </li>
+                    <li>
+                      if this current area is greater than the max_area , then assign it to max_area. 
+                    </li>
+                    <li>
+                      to shift the pointers, check the two elements we're pointing at, and shift the smaller elements index by one. 
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  now the loop is over, we found the max area. return max_area
+                </li>
+              </ul>
+            </p>
+            <div class="code-container">
+              <pre>
+                <code>
+class Solution:
+    def maxArea(self, height: list[int]) -> int:
+        i = 0
+        j = len(height) - 1
+        max_area = 0
+        while i < j:
+            max_area = max(min(height[j],height[i]) * (j-i),max_area)
+            if height[i] > height[j]:
+                j -= 1
+            else:
+                i += 1
+
+        return max_area
+        
+                </code>
+              </pre>
+            </div>
+          </div>
+          <hr>
+          <div>
+            <h2 id="question20"> #20) Difference of Two Arrays</h2>
+            <p>
+              Given two 0-indexed integer arrays nums1 and nums2, return a list answer of size 2 where:
+
+answer[0] is a list of all distinct integers in nums1 which are not present in nums2.
+answer[1] is a list of all distinct integers in nums2 which are not present in nums1.
+Note that the integers in the lists may be returned in any order.
+            </p>
+            <p>
+              This is a easy question, if we convert both lists to sets, we will get rid of the duplicate elements in each list, and all we need to do after that is get the difference of two sets, from both sides, and we have our answer.
+      
+              <br>
+              <br>
+              Here is the algorithm:
+              <ul>
+                <li>
+                  convert nums1,nums2 to sets
+                </li>
+                <li>
+                  get the difference of sets from both sides, meaning s1-s2 and s2-s1
+                </li>
+                convert this two differences into lists, and return as a pair
+              </ul>
+            </p>
+            <div class="code-container">
+              <pre>
+                <code>
+class Solution:
+    def findDifference(self, nums1: list[int], nums2: list[int]) -> list[list[int]]:
+        s1 = set(nums1)
+        s2 = set(nums2)
+        a = list(s1.difference(s2))
+        b = list(s2.difference(s1))
+        return a,b
+                </code>
+              </pre>
+            </div>
+          </div>
           <hr>
       <div id="daily">
         <h1>Daily Question Solutions</h1>
@@ -461,6 +590,63 @@ class Solution:
             self.heapify(nums,i,0)
         return nums
               
+                </code>
+              </pre>
+            </div>
+        </div>
+      </div>
+      <hr>
+      <div id="daily">
+        <div id="30july2024">
+          <h2>07/30/2024) 1653. Minimum Deletions to make a String Balanced</h2>
+          <p>
+            <strong>Problem Explanation: </strong> You are given a string s consisting only of characters 'a' and 'b'​​​​.
+
+            You can delete any number of characters in s to make s balanced. s is balanced if there is no pair of indices (i,j) such that i < j and s[i] = 'b' and s[j]= 'a'.
+            
+            Return the minimum number of deletions needed to make s balanced.
+          </p>
+          <p>
+            You can solve this question with multiple approaches, but the one i liked the most is the stack approach. We need to find all 'ba' pairs where b comes before a, and keep the count for every pair we found. This count is going to be our final answer for minimum deletions. 
+            Algorithm : 
+            <ul>
+              <li>
+                initialize a stack, and a counter. 
+              </li>
+              <li>
+                for each character in the string;
+                <ul>
+                  <li>
+                    if the stack is not empty, and the top character of the stack is b, it means if the current character is a, we found a 'ba' pair.
+                  </li>
+                  <li>
+                    pop the top character, and increase the counter by one
+                  </li>
+                  <li>
+                    else just append the current character to the stack
+                  </li>
+                </ul>
+              </li>
+              <li>
+                return the counter
+              </li>
+            </ul>
+          </p>  
+          <div class="code-container">
+              <pre>
+                <code>
+  class Solution:
+      def minimumDeletions(self, s: str) -> int:
+          stack = []
+          delete = 0
+
+          for char in s:
+              if stack and stack[-1] == "b" and char == "a":
+                  stack.pop()
+                  delete += 1
+              else:
+                  stack.append(char)
+          return delete
                 </code>
               </pre>
             </div>
