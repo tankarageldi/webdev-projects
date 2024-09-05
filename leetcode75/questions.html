@@ -597,56 +597,83 @@ class Solution:
       </div>
       <hr>
       <div id="daily">
-        <div id="30july2024">
-          <h2>07/30/2024) 1653. Minimum Deletions to make a String Balanced</h2>
+        <div id="5sept2024">
+          <h2>9/5/2024) Find Missing Observations</h2>
           <p>
-            <strong>Problem Explanation: </strong> You are given a string s consisting only of characters 'a' and 'b'​​​​.
+            <strong>Description: </strong> You have observations of n + m 6-sided dice rolls with each face numbered from 1 to 6. n of the observations went missing, and you only have the observations of m rolls. Fortunately, you have also calculated the average value of the n + m rolls. <br>
 
-            You can delete any number of characters in s to make s balanced. s is balanced if there is no pair of indices (i,j) such that i < j and s[i] = 'b' and s[j]= 'a'.
+            You are given an integer array rolls of length m where rolls[i] is the value of the ith observation. You are also given the two integers mean and n. <br>
             
-            Return the minimum number of deletions needed to make s balanced.
+            Return an array of length n containing the missing observations such that the average value of the n + m rolls is exactly mean. If there are multiple valid answers, return any of them. If no such array exists, return an empty array. <br>
+            
+            The average value of a set of k numbers is the sum of the numbers divided by k. <br>
+            
+            Note that mean is an integer, so the sum of the n + m rolls should be divisible by n + m. <br>
           </p>
-          <p>
-            You can solve this question with multiple approaches, but the one i liked the most is the stack approach. We need to find all 'ba' pairs where b comes before a, and keep the count for every pair we found. This count is going to be our final answer for minimum deletions. 
-            Algorithm : 
-            <ul>
-              <li>
-                initialize a stack, and a counter. 
-              </li>
-              <li>
-                for each character in the string;
-                <ul>
-                  <li>
-                    if the stack is not empty, and the top character of the stack is b, it means if the current character is a, we found a 'ba' pair.
-                  </li>
-                  <li>
-                    pop the top character, and increase the counter by one
-                  </li>
-                  <li>
-                    else just append the current character to the stack
-                  </li>
-                </ul>
-              </li>
-              <li>
-                return the counter
-              </li>
-            </ul>
-          </p>  
+          <p><strong>Solution: </strong> Were looking for missing values of rolls, so i started off by calculating the amount that the missing rolls sum up to, after this, we need to distribute this sum to n rolls, and this might not distribute evenly, to overcome this we need to calculate the mod n of the sum, and blah blah its fairly simple if you understand the math behind it. 
+          </p>
           <div class="code-container">
               <pre>
                 <code>
-  class Solution:
-      def minimumDeletions(self, s: str) -> int:
-          stack = []
-          delete = 0
+                  class Solution:
+                  def missingRolls(self, rolls: list[int], mean: int, n: int) -> list[int]:
+                      res = (n + len(rolls)) * mean - sum(rolls)
+                      if res > 6 * n or res < n:
+                          return []
+                      dist = res // n
+                      mod = res % n
+              
+                      result = [dist] * n
+                      for i in range(mod):
+                          result[i] += 1
+                      return result
+                      
+                </code>
+              </pre>
+            </div>
+        </div>
+      </div>
+      <hr>
+      <div id="daily">
+        <div id="24july2024">
+          <h2>07/25/2024) 912. Sort an Array</h2>
+          <p>
+            Given an array of integers nums, sort the array in ascending order and return it.
+            You must solve the problem without using any built-in functions in O(nlog(n)) time complexity and with the smallest space complexity possible. 
+            Since we can't use built in functions, and need to solve it in O(nlog(n)) time, best two options were heap sort, or merge sort. I implemented a heap sort algorithm, which has O(nlogn) complexity, both best and worst case. 
+            <br>
+            <br>
+            Here is the link to heap sort algorithm, using heapifying array and tree structure to sort the array. <a href="https://www.programiz.com/dsa/heap-sort">link</a>
+          </p>
+            <div class="code-container">
+              <pre>
+                <code>
+class Solution:
+    def heapify(self,arr,n,i):
+        largest = i
+        l = 2 * i + 1
+        r = 2 * i + 2
 
-          for char in s:
-              if stack and stack[-1] == "b" and char == "a":
-                  stack.pop()
-                  delete += 1
-              else:
-                  stack.append(char)
-          return delete
+        if l < n and arr[i] < arr[l]:
+            largest = l 
+        
+        if r < n and arr[largest] < arr[r]:
+            largest = r
+        
+        if largest != i:
+            arr[i],arr[largest] = arr[largest], arr[i]
+            self.heapify(arr,n,largest)
+
+    def sortArray(self, nums: list[int]) -> list[int]:
+    
+        n = len(nums)
+        for i in range(n//2 , -1 , -1):
+            self.heapify(nums,n,i)
+        for i in range(n-1,0,-1):
+            nums[i],nums[0] = nums[0],nums[i]
+            self.heapify(nums,i,0)
+        return nums
+              
                 </code>
               </pre>
             </div>
