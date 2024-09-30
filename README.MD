@@ -1,6 +1,5 @@
 # Information
 
-website for all my fullstack web development learning experience and projects.
 
 visit the website :[https://tankarageldi.github.io/webdev-projects/](https://tankarageldi.github.io/webdev-projects/)
 
